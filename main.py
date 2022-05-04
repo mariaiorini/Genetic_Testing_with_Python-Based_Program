@@ -5,6 +5,9 @@
 # The integer (Key) represents to position the
 # SNP is on the gene, and the letter represents
 # the SNP.
+
+change
+
 disease_dictionary = {
     1:'A' , 3:'T' , 4:'G',
     5:'C' , 6:'T' , 10:'A'
