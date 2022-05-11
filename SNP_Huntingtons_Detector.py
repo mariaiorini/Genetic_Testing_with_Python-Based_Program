@@ -9,6 +9,7 @@ def SNP_Huntingtons_Detector(seq_fileName):  # must input the name of desired fi
     seq_data = "".join([line.strip() for line in seq_data])
     start_codon = seq_data.index("TAC")
     seq_data = seq_data[start_codon:]
+    print(seq_data)
 
 
     disease_dictionary = {
@@ -16,7 +17,7 @@ def SNP_Huntingtons_Detector(seq_fileName):  # must input the name of desired fi
         3000: 'T', 4679: 'G',
         5012: 'C', 8403: 'T', 11439: 'A'
     }
-
+#create dt with no disease, create one with multiple
 
     detected_snps = []
     for snp in disease_dictionary:
@@ -25,22 +26,22 @@ def SNP_Huntingtons_Detector(seq_fileName):  # must input the name of desired fi
             if snp == idx_scaled:
                 if disease_dictionary[snp] == nucleotide:
                     if idx_scaled == 47:
-                        disease_exp = ' There is a point mutation at position 47 that is known to cause Cystic Fibrosis.'
+                        disease_exp = ' There is a point mutation at position 47 that is known to contribute to Cystic Fibrosis.'
                         detected_snps.append(disease_exp)
                     if idx_scaled == 3000:
-                        disease_exp = ' There is a point mutation at position 3000 that is known to cause ___.'
+                        disease_exp = ' There is a point mutation at position 3000 that is known to contribute to Schizophrenia'
                         detected_snps.append(disease_exp)
                     if idx_scaled == 4679:
-                        disease_exp = ' There is a point mutation at position 4679 that is known to cause ___.'
+                        disease_exp = ' There is a point mutation at position 4679 that is known to contribute to Alzheimers.'
                         detected_snps.append(disease_exp)
                     if idx_scaled == 5012:
-                        disease_exp = ' There is a point mutation at position 5012 that is known to cause ___.'
+                        disease_exp = ' There is a point mutation at position 5012 that is known to contribute to Breast Cancer.'
                         detected_snps.append(disease_exp)
                     if idx_scaled == 8403:
-                        disease_exp = ' There is a point mutation at position 8403 that is known to cause ___.'
+                        disease_exp = ' There is a point mutation at position 8403 that is known to contribute to Rheumatoid Arthritis.'
                         detected_snps.append(disease_exp)
                     if idx_scaled == 11439:
-                        disease_exp = 'There is a point mutation at position 11439 that is known to cause ___.'
+                        disease_exp = 'There is a point mutation at position 11439 that is known to contribute to Obesity.'
                         detected_snps.append(disease_exp)
                     else:
                         disease_exp = ''
@@ -70,7 +71,7 @@ def SNP_Huntingtons_Detector(seq_fileName):  # must input the name of desired fi
                       "\nHuntington's Likelihood: No risk of disease."
     elif 27 <= hunt_counter <= 35:
         hunt_result = "Number of CAG repeats: " + str(hunt_counter) + \
-                      "\nHuntington's Likeleihood:  Not at risk of developing symptoms of HD but, " \
+                      "\nHuntington's Likelihood:  Not at risk of developing symptoms of HD but " \
                       "may be at risk of having a child with CAG repeats in the HD-causing range."
     elif 36 <= hunt_counter <= 39:
         hunt_result = "Number of CAG repeats: " + str(hunt_counter) + \
@@ -81,7 +82,6 @@ def SNP_Huntingtons_Detector(seq_fileName):  # must input the name of desired fi
                       "\nHuntington's Likelihood: Will develop symptoms of HD over a natural lifetime." \
 
     detected_snps = "".join([str(elem) for elem in detected_snps])
-    print(detected_snps)
 
     import tkinter as tk
     from tkinter import ttk
@@ -95,5 +95,3 @@ def SNP_Huntingtons_Detector(seq_fileName):  # must input the name of desired fi
     popup.mainloop()
 
     return(hunt_result,detected_snps)
-
-SNP_Huntingtons_Detector("seq_data1.txt")
